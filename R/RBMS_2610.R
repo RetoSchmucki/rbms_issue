@@ -14,7 +14,8 @@
 ## [10] First year
 ## [11] Last year
 
-R --vanilla
+if (!requireNamespace("devtools")) install.packages("devtools")
+devtools::install_github("RetoSchmucki/rbms")
 
 #load libraries
 library(rbms)
@@ -162,19 +163,6 @@ for(i in c(0, seq_len(nrow(bootsample$boot_ind)))){
                                           boot_ind = bootsample,
                                           glm_weights = TRUE,
                                           rm_zero = TRUE)
-  #  setTxtProgressBar(pb, i)
-}
-
-for (i in c(0, seq_len(nrow(bootsample$boot_ind)))) {
-  co_index[[i + 1]] <- collated_index_fix(
-    data = sindex_2,
-    s_sp = p_Speciess,
-    sindex_value = "SINDEX",
-    bootID = i,
-    boot_ind = bootsample,
-    glm_weights = TRUE,
-    rm_zero = TRUE
-  )
   #  setTxtProgressBar(pb, i)
 }
 
